@@ -213,7 +213,7 @@ function product_sync() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product.php',      
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_AllproductTest.php',      
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -239,8 +239,8 @@ function product_sync() {
 						j++;
 						if(j==ajaxlength12){
 						$("#product_sync").removeClass("hide");
-							product_sync1();
-						//	alert('Database synchronization completed! Data Count:'+ localStorage.getItem("server_item_count"));
+							//product_sync1();
+							alert('Database synchronization completed! Data Count:'+ localStorage.getItem("server_item_count"));
 							//window.location.reload();
 						}
 					}
