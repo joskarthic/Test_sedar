@@ -20,7 +20,7 @@
 		<!-- Basic Styles -->
 		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">	
 		
-		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
 		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
 		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.css">
 
@@ -140,7 +140,7 @@
 								<span style="font-size:22px;" >Server item count :<span id="serveritem_count" style="font-size:22px;" ></span></span>
 							</section>
 							<section class="col col-xs-12">
-								<span style="font-size:22px;" >Your App Version is : <span id="app_ver" style="font-size:22px;"></span></span></span>
+								<span style="font-size:22px;" >Your App Version is : WAVE2DEV</span></span>
 							</section>
 							
 							<section class="col col-xs-12">
@@ -168,7 +168,7 @@
 	var name='wave';
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product_count.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product_count.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		async: false,
@@ -176,12 +176,12 @@
 		success:function (json) {  
 			
 			var produc_row_count = json.product_count;
-			var productlist_count = localStorage.getItem("productlist_count");
+			var productlist_count = localStorage.getItem("local_count");
 			//alert('ajax server count'+produc_row_count);
 			//alert('ajax local Count'+productlist_count);
 			localStorage.setItem("server_item_count", produc_row_count);
 			document.getElementById("serveritem_count").innerHTML = produc_row_count;
-			document.getElementById("productlist_count").innerHTML = productlist_count;
+			document.getElementById("localitem_count").innerHTML = productlist_count;
 			
 		
 			if (produc_row_count != productlist_count) {
@@ -202,7 +202,7 @@ function truncate_local_productlist()
 		db.transaction(function (tx){
 		tx.executeSql('DROP TABLE IF EXISTS productlist');
 		alert('Local Database Truncated. Please wait while new database sync in progress');
-		localStorage.removeItem("productlist_count");
+		localStorage.removeItem("local_count");
 		product_sync();
 	});
 }
@@ -213,7 +213,7 @@ function product_sync() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product.php',      
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product.php',      
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -257,7 +257,7 @@ function product_sync1() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product1.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product1.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -303,7 +303,7 @@ function product_sync2() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product2.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product2.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -349,7 +349,7 @@ function product_sync3() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product3.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product3.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -397,7 +397,7 @@ function product_sync4() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product4.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product4.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -447,7 +447,7 @@ function product_sync5() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product5.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product5.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -503,7 +503,7 @@ var product_sync5 = localStorage.getItem("product_sync5");
 var count = Number(product_sync) + Number(product_sync1) + Number(product_sync2) + Number(product_sync3)+ Number(product_sync4);
 
 //alert("count--"+count);
-localStorage.setItem("productlist_count", count);
+localStorage.setItem("local_count", count);
 }
 
 
@@ -514,7 +514,7 @@ function product_sync6() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product6.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product6.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -554,7 +554,7 @@ function product_sync7() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product7.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product7.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -594,7 +594,7 @@ function product_sync8() {
 	$("#data_update_status").removeClass("hide");
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product8.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product8.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -673,7 +673,7 @@ if(user_name==null){
 	var name='wave';
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_modified_product.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_modified_product.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -718,7 +718,7 @@ if(user_name==null){
 	var name='wave';
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_user.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_user.php',
 		data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -745,7 +745,7 @@ if(user_name==null){
 	var name='wave';
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_fabric.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_fabric.php',
 		 data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -770,7 +770,7 @@ if(user_name==null){
 	var name='wave';
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_product_possible.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_product_possible.php',
 		 data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -795,7 +795,7 @@ if(user_name==null){
 	var name='wave';
 	$.ajax({
 		type: "POST",
-		url: 'http://wave.elasticbeanstalk.com/app/ajax_sync_showroom.php',
+		url: 'http://wave2dev.elasticbeanstalk.com/app/ajax_sync_showroom.php',
 		 data : 'uname='+name ,
 		dataType:"json",
 		processData: false,
@@ -848,13 +848,13 @@ if(user_name==null){
 
 //update check
 
-
+/*
 function updatecheck(){
-	var appcode='SEDARWAVE0027.5';
+	var appcode='WAVE2DEV';
 	document.getElementById("app_ver").innerHTML = appcode;
 	$.ajax({
 		type: "POST",
-		url: "http://wave.elasticbeanstalk.com/app/ajax_update.php",
+		url: "http://wave2dev.elasticbeanstalk.com/app/ajax_update.php",
 		data :  'appcode='+appcode,
 		dataType: "json",
 		processData: false,
@@ -868,12 +868,12 @@ function updatecheck(){
 		}
 	});
 }
-
+*/
 
 //End update check
 // App Admin user
 function admin_user(){
-	var appcode='SEDARWAVE0027.5'; 
+	var appcode='WAVE2DEV'; 
 	var showroom_name=localStorage.getItem("showroom_name");
 	var user_name=localStorage.getItem("user_name");
 	var user_id=localStorage.getItem("user_id");
@@ -883,7 +883,7 @@ function admin_user(){
 	//alert(timestamp);
 	$.ajax({
 		type: "POST",
-		url: "http://wave.elasticbeanstalk.com/app/ajax_admin_user.php",
+		url: "http://wave2dev.elasticbeanstalk.com/app/ajax_admin_user.php",
 		data :  'user_name='+user_name+'&showroom_name='+showroom_name+'&appcode='+appcode+'&user_id='+user_id+'&time_stamp='+timestamp,
 		dataType: "json",
 		processData: false,
